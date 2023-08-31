@@ -9,6 +9,6 @@ class ArticleController extends Controller
 {
     public function article(Article $article)
     {
-        return $article->get();
+        return view('articles.index')->with(['articles' => $article->getPaginateByLimit()]);
     }
 }
