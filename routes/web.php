@@ -12,6 +12,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\RelationshipController;
+use App\Http\Controllers\IconController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,5 @@ Route::get('/room', [RoomController::class, 'room']);
 Route::get('/message', [MessageController::class, 'message']);
 Route::get('/entry', [EntryController::class, 'entry']);
 Route::get('/relationship', [RelationshipController::class, 'relationship']);
+Route::get('/icon', [IconController::class, 'icon']);
+Route::get('/image', [ImageController::class, 'image']);
