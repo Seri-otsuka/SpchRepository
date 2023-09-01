@@ -14,4 +14,6 @@ use App\Http\Controllers\ArticleController;
 |
 */
 Route::get('/', [ArticleController::class, 'article']);
+Route::get('/articles/create', [ArticleController::class, 'create']);
 Route::get('/articles/{article}', [ArticleController::class, 'show']);
+Route::post('/articles', [ArticleController::class, 'store']);
