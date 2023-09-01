@@ -14,3 +14,4 @@ use App\Http\Controllers\ArticleController;
 |
 */
 Route::get('/', [ArticleController::class, 'article']);
+Route::get('/articles/{article}', [ArticleController::class, 'show']);
