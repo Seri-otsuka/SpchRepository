@@ -9,6 +9,7 @@
     </head>
     <body class="antialiased">
         <h1>BlogName</h1>
+        <a href="/articles/create">記事を作る</a>
         <div class="articles">
            @foreach ($articles as $article)
            <div class='article'>
