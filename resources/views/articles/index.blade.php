@@ -11,8 +11,10 @@
         <h1>BlogName</h1>
         <div class="articles">
            @foreach ($articles as $article)
-           <div class='post'>
-               <h2 class='title'>{{ $article->title }}</h2>
+           <div class='article'>
+               <h2 class='title'>
+                   <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
+               </h2>
                <p class='text'>{{ $article->text }}</p>
            </div>
            @endforeach
