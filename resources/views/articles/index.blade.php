@@ -23,5 +23,6 @@
           <div class='paginate'>
             {{ $articles->links() }}
         </div>
+        <a href="http://www.facebook.com/share.php?u={URL}" rel="nofollow noopener" target="_blank">リンクテキスト</a>
     </body>
 </html>
