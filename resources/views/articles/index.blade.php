@@ -9,6 +9,8 @@
     </head>
     <body class="antialiased">
         <h1>BlogName</h1>
+        <a href="login">ログイン</a>
+        <a href="register">新規登録</a>
         <a href="/articles/create">記事を作る</a>
         <div class="articles">
            @foreach ($articles as $article)
