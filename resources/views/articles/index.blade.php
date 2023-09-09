@@ -19,12 +19,25 @@
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
                </h2>
                <p class='text'>{{ $article->text }}</p>
+               <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
+                   @csrf
+                   @method('DELETE')
+                   <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
+               </form>
            </div>
            @endforeach
         </div>
           <div class='paginate'>
             {{ $articles->links() }}
         </div>
-        <a href="http://www.facebook.com/share.php?u={URL}" rel="nofollow noopener" target="_blank">リンクテキスト</a>
+        <script>
+            function deleteArticle(id){
+                'use strict'
+                
+                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>

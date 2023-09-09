@@ -46,4 +46,10 @@ class ArticleController extends Controller
     
         return redirect('/articles/' . $article->id);
     }
+    
+   public function delete(Article $article)
+   {
+       $article->delete();
+       return redirect('/article');
+   }
 }
