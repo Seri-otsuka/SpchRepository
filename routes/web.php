@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/article', [ArticleController::class, 'article']);
+Route::get('/articles/create', [ArticleController::class, 'create']);
+Route::get('/articles/{article}', [ArticleController::class, 'show']);
+Route::post('/articles', [ArticleController::class, 'store']);
+Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
+Route::put('/articles/{article}', [ArticleController::class, 'update']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

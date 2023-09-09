@@ -8,7 +8,7 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <h1>BlogName</h1>
+        <h1>記事一覧</h1>
         <a href="login">ログイン</a>
         <a href="register">新規登録</a>
         <a href="/articles/create">記事を作る</a>
