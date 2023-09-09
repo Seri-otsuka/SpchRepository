@@ -8,6 +8,9 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="edit">
+            <a href="/articles/{{ $article->id }}/edit">編集</a>
+        </div>
         <h1 class='title'>
             {{ $article->title }}
         </h1>
@@ -18,7 +21,7 @@
             </div>
         </div>
         <div class='footer'>
-            <a href="/">戻る</a>
+            <a href="/article">戻る</a>
         </div>
     </body>
 </html>
