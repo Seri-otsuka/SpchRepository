@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('goods', function (Blueprint $table) {
+        Schema::create('relationships', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('follower_id')->constrained('users');
+            $table->foreignId('followerd_id')->constrained('users');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goods');
+        Schema::dropIfExists('relationships');
     }
 };
