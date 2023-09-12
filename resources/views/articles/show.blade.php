@@ -19,6 +19,7 @@
                 <h3>本文</h3>
                 <p>{{ $article->text }}</p>
             </div>
+            <a href="">{{ $article->category->name }}</a>
         </div>
         <div class='footer'>
             <a href="/article">戻る</a>

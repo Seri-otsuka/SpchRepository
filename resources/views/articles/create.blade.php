@@ -18,6 +18,14 @@
                 <textarea name="article[text]" placeholder="ここに記事を書いてね！">{{ old('article.text') }}</textarea>
                 <p class="text_error" style="color:red">{{ $errors->first('article.text') }}</p>
             </div>
+            <div class="category">
+                <h2>Category</h2>
+                <select name="article[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <input type="submit" value="投稿" />
         </form>
         <div class="footer">
