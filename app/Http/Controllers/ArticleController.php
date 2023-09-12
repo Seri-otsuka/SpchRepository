@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
+use App\Models\Category;
 
 class ArticleController extends Controller
 {
@@ -19,15 +20,12 @@ class ArticleController extends Controller
     {
         return view('articles.show')->with(['article' => $article]);
     }
-    //記事作成画面のメソッド
-    public function create(Article $article)
-    {
-        return view('articles.create');
-    }
     //記事保存のメソッド
     public function store(Article $article, ArticleRequest $request)
     {
         $input = $request['article'];
+        $article = new Article();
+        $article->user_id = \Auth::id();
         $article->fill($input)->save();
         return redirect('/articles/' . $article->id);
     }
@@ -52,4 +50,8 @@ class ArticleController extends Controller
        $article->delete();
        return redirect('/article');
    }
+    public function create(Category $category)
+    {
+        return view('articles.create')->with(['categories' => $category->get()]);
+    }
 }

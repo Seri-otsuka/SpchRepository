@@ -14,12 +14,23 @@ class Article extends Model
     protected $fillable = [
         'title',
         'text',
+        'category_id',
         ];
     
     public function getPaginateByLimit(int $limit_count = 3)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+         return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
     
    

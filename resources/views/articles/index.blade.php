@@ -19,6 +19,7 @@
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
                </h2>
                <p class='text'>{{ $article->text }}</p>
+               <a href="">{{ $article->category->name }}</a>
                <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
                    @csrf
                    @method('DELETE')
