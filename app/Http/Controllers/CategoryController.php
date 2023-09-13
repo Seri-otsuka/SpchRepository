@@ -11,4 +11,9 @@ class CategoryController extends Controller
     {
         return $category->get();
     }
+    
+    public function index(Category $category)
+    {
+        return view('categories.index')->with(['articles' => $category->getByCategory()]);
+    }
 }
