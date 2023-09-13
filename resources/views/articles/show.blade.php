@@ -11,6 +11,8 @@
         <div class="edit">
             <a href="/articles/{{ $article->id }}/edit">編集</a>
         </div>
+        
+        <p class='create'>投稿日{{ $article->created_at }}</p>
         <h1 class='title'>
             {{ $article->title }}
         </h1>
@@ -19,7 +21,7 @@
                 <h3>本文</h3>
                 <p>{{ $article->text }}</p>
             </div>
-            <a href="">{{ $article->category->name }}</a>
+            <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
         </div>
         <div class='footer'>
             <a href="/article">戻る</a>

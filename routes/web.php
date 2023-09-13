@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -27,6 +28,11 @@ Route::post('/articles', [ArticleController::class, 'store']);
 Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
 Route::put('/articles/{article}', [ArticleController::class, 'update']);
 Route::delete('/articles/{article}', [ArticleController::class, 'delete']);
+Route::get('/categories/{category}', [CategoryController::class,'index']);
+
+Route::get('/introductions', function () {
+    return view('introductions.index');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
