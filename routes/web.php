@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\GoodController;
+
 
 
 /*
@@ -42,6 +44,8 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::resource('/articles', ArticleController::class);
+    Route::post('/articles/{article}/good', [GoodController::class, 'store'])->name('good.store');
+    Route::delete('/articles/{article}/ungood', [GoodController::class, 'destroy'])->name('good.destroy');
 });
 
 Route::middleware('auth')->group(function () {

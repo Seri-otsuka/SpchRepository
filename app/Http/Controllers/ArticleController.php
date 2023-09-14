@@ -58,4 +58,14 @@ class ArticleController extends Controller
     {
         return view('articles.create')->with(['categories' => $category->get()]);
     }
+    
+    //いいね
+     public function good_articles()
+    {
+        $articles = \Auth::user()->good_articles()->orderBy('created_at', 'desc')->paginate(3);
+        $data = [
+            'articles' => $articles,
+        ];
+        return view('mypages.goods', $data);
+    }
 }
