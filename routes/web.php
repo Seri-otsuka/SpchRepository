@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/articles', ArticleController::class);
     Route::post('/articles/{article}/good', [GoodController::class, 'store'])->name('good.store');
     Route::delete('/articles/{article}/ungood', [GoodController::class, 'destroy'])->name('good.destroy');
+    Route::get('/goods', [ArticleController::class, 'good_articles'])->name('goods');
 });
 
 Route::middleware('auth')->group(function () {

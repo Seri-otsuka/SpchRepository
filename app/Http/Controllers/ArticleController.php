@@ -13,7 +13,7 @@ class ArticleController extends Controller
     //記事表示一覧のメソッド
     public function article(Article $article)
     {
-        return view('articles.index')->with(['articles' => $article->getPaginateByLimit()]);
+        return view('articles.index')->with(['articles' => $article->getPaginateByLimit(3)]);
     }
     //記事詳細表示のメソッド
     public function show(Article $article)
@@ -59,13 +59,13 @@ class ArticleController extends Controller
         return view('articles.create')->with(['categories' => $category->get()]);
     }
     
-    //いいね
+    //いいねした記事を取得する
      public function good_articles()
     {
         $articles = \Auth::user()->good_articles()->orderBy('created_at', 'desc')->paginate(3);
         $data = [
             'articles' => $articles,
         ];
-        return view('mypages.goods', $data);
+        return view('mypages.good', $data);
     }
 }
