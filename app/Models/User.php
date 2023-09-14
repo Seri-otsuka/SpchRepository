@@ -42,8 +42,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    //記事に対して
      public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+    
+    //記事に対するいいねに関して
+    public function goods()
+    {
+        return $this->hasMany(Good::class);
+    }
+    
+    //記事をいいねしたユーザがその記事のリソースを操作できるようにする
+    public function good_articles()
+    {
+        return $this->belongsToMany(Article::class, 'goods', 'user_id', 'article_id');
+    }
+    
+      public function is_good($articleId)
+    {
+        return $this->goods()->where('article_id', $articleId)->exists();
     }
 }
