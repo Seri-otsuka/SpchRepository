@@ -13,6 +13,7 @@
         <a href="register">新規登録</a>
         <a href="/articles/create">記事を作る</a>
         <a href="/introductions">サイトについて</a>
+        <a href="{{ route('mypage') }}">マイページ</a>
     
         
         <div class="articles">

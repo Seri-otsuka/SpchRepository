@@ -22,11 +22,13 @@
                </h2>
                <p class='text'>{{ $article->text }}</p>
                <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
+               @can('delete', $article)
                <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
                    @csrf
                    @method('DELETE')
                    <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
                </form>
+               @endcan
            </div>
            @endforeach
         </div>
