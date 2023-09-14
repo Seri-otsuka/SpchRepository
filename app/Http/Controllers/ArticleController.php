@@ -33,20 +33,24 @@ class ArticleController extends Controller
     //記事編集のメソッド
     public function edit(Article $article)
     {
+        $this->authorize($article);
+        $data = ['article' => $article];
         return view('articles.edit')->with(['article' => $article]);
     }
     
     //記事編集後投稿のメソッド
     public function update(ArticleRequest $request, Article $article)
     {
+        $this->authorize($article);
         $input_article = $request['article'];
         $article->fill($input_article)->save();
     
         return redirect('/articles/' . $article->id);
     }
     
-   public function delete(Article $article)
+   public function destroy(Article $article)
    {
+       $this->authorize($article);
        $article->delete();
        return redirect('/article');
    }

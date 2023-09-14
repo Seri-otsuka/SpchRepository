@@ -8,11 +8,15 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
+        @can('update', $article)
         <div class="edit">
             <a href="/articles/{{ $article->id }}/edit">編集</a>
         </div>
+        @endcan
         
-        <p class='create'>投稿日{{ $article->created_at }}</p>
+        <div class="article-info">
+                      投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
+                </div>
         <h1 class='title'>
             {{ $article->title }}
         </h1>
@@ -23,8 +27,24 @@
             </div>
             <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
         </div>
+        @can('delete', $article)
+        <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
+                   @csrf
+                   @method('DELETE')
+                   <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
+               </form>
+               @endcan
         <div class='footer'>
             <a href="/article">戻る</a>
         </div>
+         <script>
+            function deleteArticle(id){
+                'use strict'
+                
+                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>

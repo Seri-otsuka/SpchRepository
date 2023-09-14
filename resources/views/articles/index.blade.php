@@ -13,20 +13,26 @@
         <a href="register">新規登録</a>
         <a href="/articles/create">記事を作る</a>
         <a href="/introductions">サイトについて</a>
+    
+        
         <div class="articles">
            @foreach ($articles as $article)
            <div class='article'>
-               <p class='create'>投稿日{{ $article->created_at }}</p>
+                <div class="article-info">
+                      投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
+                </div>
                <h2 class='title'>
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
                </h2>
                <p class='text'>{{ $article->text }}</p>
                <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
+               @can('delete', $article)
                <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
                    @csrf
                    @method('DELETE')
                    <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
                </form>
+               @endcan
            </div>
            @endforeach
         </div>
