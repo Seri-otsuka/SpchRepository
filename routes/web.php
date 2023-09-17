@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\GoodController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -32,6 +33,8 @@ Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
 Route::put('/articles/{article}', [ArticleController::class, 'update']);
 Route::delete('/articles/{article}', [ArticleController::class, 'delete']);
 Route::get('/categories/{category}', [CategoryController::class,'index']);
+Route::get('/users/{user}', [UserController::class,'another']);
+
 
 Route::get('/introductions', function () {
     return view('introductions.index');

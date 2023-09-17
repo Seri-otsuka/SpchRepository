@@ -16,4 +16,5 @@ class MypageController extends Controller
         ];
         return view('mypages.index', $data);
     }
+    
 }

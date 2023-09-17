@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->goods()->where('article_id', $articleId)->exists();
     }
+    
+    public function getByUser(int $limit_count = 5)
+{
+     return $this->articles()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+}
 }

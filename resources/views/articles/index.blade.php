@@ -20,7 +20,7 @@
            @foreach ($articles as $article)
            <div class='article'>
                 <div class="article-info">
-                      投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
+                      投稿日：{{ $article->created_at }}｜投稿者：<a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
                 </div>
                <h2 class='title'>
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
