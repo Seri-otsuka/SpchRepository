@@ -9,13 +9,15 @@
     </head>
     <body>
         <h1>マイページ</h1>
-        <p>ようこそ、{{ Auth::user()->name }}さん</p>
+        <p>{{ Auth::user()->name }}</p>
         <p><a href="/article">記事一覧へ</a></p>
+        <a href="">プロフィール作成</a>
         <a href="{{ route('goods') }}">いいねした記事</a>
         <form action="{{ route('logout') }}" method="post">
             @csrf 
             <button type="submit">ログアウト</button>
         </form>
+        <h1>自分の記事</h1>
         <div class="articles">
            @foreach ($articles as $article)
            <div class='article'>

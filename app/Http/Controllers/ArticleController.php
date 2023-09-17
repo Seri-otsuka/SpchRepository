@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Category;
+use App\Models\User;
+
 
 class ArticleController extends Controller
 {
@@ -68,4 +70,6 @@ class ArticleController extends Controller
         ];
         return view('mypages.good', $data);
     }
+    
+    
 }
