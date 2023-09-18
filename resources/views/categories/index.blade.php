@@ -13,10 +13,11 @@
         <a href="register">新規登録</a>
         <a href="/articles/create">記事を作る</a>
         <a href="/introductions">サイトについて</a>
+        <a href="{{ route('mypage') }}">マイページ</a>
         <div class="articles">
            @foreach ($articles as $article)
            <div class='article'>
-               <p class='create'>投稿日{{ $article->created_at }}</p>
+               <p class='create'>投稿日：{{ $article->created_at }}</p>投稿者：<a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
                <h2 class='title'>
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
                </h2>

@@ -65,8 +65,29 @@ class User extends Authenticatable
         return $this->goods()->where('article_id', $articleId)->exists();
     }
     
+    //ユーザーの情報を取得
     public function getByUser(int $limit_count = 5)
-{
-     return $this->articles()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
-}
+    {
+         return $this->articles()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function relationships()
+    {
+        return $this->hasMany(Relationship::class);
+    }
+    
+    public function relationship_users()
+    {
+        return $this->belongsToMany(User::class, 'relationships', 'follower_id', 'followed_id');
+    }
+    
+    //フォローしているかどうかの判断(followed_idにusesテーブルのidが入ってるかどうか)
+    public function is_relationship($relationship)
+    {
+        return $this->relationships()->where('followed_id', $relationship)->exists();
+    }
+    
+    
+
+
 }

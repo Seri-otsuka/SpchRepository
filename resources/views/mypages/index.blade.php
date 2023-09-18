@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>マイページ</h1>
-        <p>{{ Auth::user()->name }}</p>
+        <p>{{ Auth::user()->name }}さん、お帰りなさい</p>
         <p><a href="/article">記事一覧へ</a></p>
         <a href="">プロフィール作成</a>
         <a href="{{ route('goods') }}">いいねした記事</a>
@@ -29,6 +29,23 @@
                </h2>
                <p class='text'>{{ $article->text }}</p>
                <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
+               <div class="edit">
+                    <a href="/articles/{{ $article->id }}/edit">編集</a>
+                </div>
+                <div class="article-control">
+                @if (!Auth::user()->is_good($article->id))
+                <form action="{{ route('good.store', $article) }}" method="post">
+                    @csrf
+                    <button>いいね</button>
+                </form>
+                @else
+                <form action="{{ route('good.destroy', $article) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button>いいね解除</button>
+                </form>
+                @endif
+            </div>
                @can('delete', $article)
                <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
                    @csrf

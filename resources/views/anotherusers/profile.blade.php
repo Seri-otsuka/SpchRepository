@@ -8,7 +8,10 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>{{ $user_name}}</h1>
+        <div class="user">
+        <h1>{{ $user_name }}さんのページ</h1>
+        
+        </div>
         <div class="articles">
            @foreach ($articles as $article)
            <div class='article'>

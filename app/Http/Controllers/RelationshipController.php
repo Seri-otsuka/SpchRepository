@@ -11,4 +11,19 @@ class RelationshipController extends Controller
     {
         return $relationship->get();
     }
+    
+    public function store($userid) {
+        $user = \Auth::user();
+        if (!$user->is_relationship($userid)) {
+            $user->relationship_users()->attach($userid);
+        }
+        return back();
+    }
+    public function destroy($userId) {
+        $user = \Auth::user();
+        if ($user->is_relationship($userId)) {
+            $user->relationship_users()->detach($userId);
+        }
+        return back();
+    }
 }

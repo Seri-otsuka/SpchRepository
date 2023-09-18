@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RelationshipController;
 
 
 
@@ -50,6 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/articles/{article}/good', [GoodController::class, 'store'])->name('good.store');
     Route::delete('/articles/{article}/ungood', [GoodController::class, 'destroy'])->name('good.destroy');
     Route::get('/goods', [ArticleController::class, 'good_articles'])->name('goods');
+    Route::post('/articles/{user}/relationship', [RelationshipController::class, 'store'])->name('relationship.store');
+    Route::delete('/articles/{user}/unrelationship', [RelationshipController::class, 'destroy'])->name('relationship.destroy');
 });
 
 Route::middleware('auth')->group(function () {
