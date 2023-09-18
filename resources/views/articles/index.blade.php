@@ -22,7 +22,7 @@
                 <div class="article-info">
                       投稿日：{{ $article->created_at }}｜投稿者：<a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
                       <div class="user-control">
-                        @if (!Auth::user()->is_relationship($article->user))
+                        @if (!Auth::user()->is_relationship($article->user_id))
                         <form action="{{ route('relationship.store', $article->user) }}" method="post">
                             @csrf
                             <button>フォロー</button>

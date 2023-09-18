@@ -78,13 +78,13 @@ class User extends Authenticatable
     
     public function relationship_users()
     {
-        return $this->belongsToMany(User::class, 'relationships', 'follower_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'relationships', 'user_id', 'followed_id');
     }
     
     //フォローしているかどうかの判断(followed_idにusesテーブルのidが入ってるかどうか)
-    public function is_relationship($relationship)
+    public function is_relationship($user)
     {
-        return $this->relationships()->where('followed_id', $relationship)->exists();
+        return $this->relationships()->where('followed_id', $user)->exists();
     }
     
     
