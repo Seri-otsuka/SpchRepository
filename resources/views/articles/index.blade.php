@@ -37,7 +37,7 @@
                     </div>
                 </div>
                <h2 class='title'>
-                   <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
+                   <a href="{{ route('article.show', $article->id)}}">{{ $article->title }}</a>
                </h2>
                <p class='text'>{{ $article->text }}</p>
                <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>

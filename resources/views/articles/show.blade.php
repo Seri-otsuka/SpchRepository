@@ -60,5 +60,23 @@
                 }
             }
         </script>
+            <h2>コメント</h2>
+                <ul>
+                    <li>
+                        <form method="POST" action="{{ route('comments.store',$article)}}">
+                            @csrf
+                            <input type="text" name="text" placeholder="コメント">
+                            <button>コメントする</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    @foreach($article->comments()->latest()->get() as $comment)
+                    <li>
+                        {{ $comment->text }}
+                    </li>
+                    @endforeach
+                </ul>
+            
     </body>
 </html>
