@@ -87,6 +87,10 @@ class User extends Authenticatable
         return $this->relationships()->where('followed_id', $user)->exists();
     }
     
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
     
 
 

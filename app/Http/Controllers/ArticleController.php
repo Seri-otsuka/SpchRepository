@@ -8,6 +8,7 @@ use App\Http\Requests\ArticleRequest;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Relationship;
+use App\Models\Comment;
 
 
 class ArticleController extends Controller
@@ -22,9 +23,11 @@ class ArticleController extends Controller
             'articles' => $article->getPaginateByLimit(3)]);
     }
     //記事詳細表示のメソッド
-    public function show(Article $article)
+    public function show(Article $article,Comment $comment)
     {
-        return view('articles.show')->with(['article' => $article]);
+        return view('articles.show')->with([
+            'article' => $article,
+            'comment' => $comment]);
     }
     //記事保存のメソッド
     public function store(Article $article, ArticleRequest $request)
@@ -60,6 +63,7 @@ class ArticleController extends Controller
        $article->delete();
        return redirect('/article');
    }
+   
     public function create(Category $category)
     {
         return view('articles.create')->with(['categories' => $category->get()]);

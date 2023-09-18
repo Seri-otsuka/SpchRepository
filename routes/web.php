@@ -8,6 +8,8 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RelationshipController;
+use App\Http\Controllers\CommentController;
+
 
 
 
@@ -26,16 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/article', [ArticleController::class, 'article']);
-Route::get('/articles/create', [ArticleController::class, 'create']);
-Route::get('/articles/{article}', [ArticleController::class, 'show']);
-Route::post('/articles', [ArticleController::class, 'store']);
-Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
-Route::put('/articles/{article}', [ArticleController::class, 'update']);
-Route::delete('/articles/{article}', [ArticleController::class, 'delete']);
-Route::get('/categories/{category}', [CategoryController::class,'index']);
-Route::get('/users/{user}', [UserController::class,'another']);
-
+Route::post('/articles/{article}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/introductions', function () {
     return view('introductions.index');
@@ -48,6 +41,15 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::resource('/articles', ArticleController::class);
+    Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('article.show');
+    Route::get('/article', [ArticleController::class, 'article']);
+    Route::get('/articles/create', [ArticleController::class, 'create']);
+    Route::post('/articles', [ArticleController::class, 'store']);
+    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
+    Route::put('/articles/{article}', [ArticleController::class, 'update']);
+    Route::delete('/articles/{article}', [ArticleController::class, 'delete']);
+    Route::get('/categories/{category}', [CategoryController::class,'index']);
+    Route::get('/users/{user}', [UserController::class,'another']);
     Route::post('/articles/{article}/good', [GoodController::class, 'store'])->name('good.store');
     Route::delete('/articles/{article}/ungood', [GoodController::class, 'destroy'])->name('good.destroy');
     Route::get('/goods', [ArticleController::class, 'good_articles'])->name('goods');
