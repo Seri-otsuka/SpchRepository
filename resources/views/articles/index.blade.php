@@ -21,6 +21,20 @@
            <div class='article'>
                 <div class="article-info">
                       投稿日：{{ $article->created_at }}｜投稿者：<a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
+                      <div class="user-control">
+                        @if (!Auth::user()->is_relationship($article->user))
+                        <form action="{{ route('relationship.store', $article->user) }}" method="post">
+                            @csrf
+                            <button>フォロー</button>
+                        </form>
+                        @else
+                        <form action="{{ route('relationship.destroy', $article->user) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button>フォロー解除</button>
+                        </form>
+                        @endif
+                    </div>
                 </div>
                <h2 class='title'>
                    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>

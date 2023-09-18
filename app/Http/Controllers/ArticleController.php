@@ -7,15 +7,19 @@ use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Relationship;
 
 
 class ArticleController extends Controller
 {
     
     //記事表示一覧のメソッド
-    public function article(Article $article)
+    public function article(Article $article, User $user)
     {
-        return view('articles.index')->with(['articles' => $article->getPaginateByLimit(3)]);
+        
+        return view('articles.index')->with([
+            'users' => $user,
+            'articles' => $article->getPaginateByLimit(3)]);
     }
     //記事詳細表示のメソッド
     public function show(Article $article)
