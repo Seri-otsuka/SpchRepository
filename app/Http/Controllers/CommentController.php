@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Article;
 
@@ -10,7 +11,7 @@ use App\Models\Article;
 class CommentController extends Controller
 {
     
-    public function store(Request $request,Article $article)
+    public function store(CommentRequest $request,Article $article)
     {
         $input = $request['comment'];
         $comment = new Comment();

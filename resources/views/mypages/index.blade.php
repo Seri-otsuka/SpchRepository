@@ -9,17 +9,20 @@
     </head>
     <body>
         <h1>マイページ</h1>
-        <p>{{ Auth::user()->name }}さん、お帰りなさい</p>
-        <p><a href="/article">記事一覧へ</a></p>
-        <a href="{{ route('profile.edit') }}">プロフィール編集</a>
+        <p>
+            {{ Auth::user()->name }}さん、お帰りなさい
+            {{ Auth::user()->text }}
+        </p>
+        <a href="/article">記事一覧へ</a>
+        <a href="{{ route('profile.edit') }}">ユーザー情報設定</a>
         <a href="{{ route('goods') }}">いいねした記事</a>
         <form action="{{ route('logout') }}" method="post">
             @csrf 
             <button type="submit">ログアウト</button>
         </form>
         <!--フォロー機能のテーブルからデータを取得して一覧を見れるようにしたい-->
-        <button>フォロー中</button>
-        <button>フォロワー</button>
+        <a href="{{ route('follows') }}"><button>フォロー中</button></a>
+        <a href="{{ route('followers') }}"><button>フォロワー</button></a>
         <h1>自分の記事</h1>
         <div class="articles">
            @foreach ($articles as $article)

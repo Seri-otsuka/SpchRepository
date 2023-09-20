@@ -22,7 +22,7 @@ class ArticleController extends Controller
         
         return view('articles.index')->with([
             'users' => $user,
-            'articles' => $article->getPaginateByLimit(3)]);
+            'articles' => $article->getPaginateByLimit(8)]);
     }
     //記事詳細表示のメソッド
     public function show(Article $article)

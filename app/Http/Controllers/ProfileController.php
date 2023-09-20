@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use Storage;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -26,10 +29,16 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $request->user()->fill($request->safe()->only(['name', 'email']));
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+        
+        $path = null;
+        if ($request->hasFile('picture')) {
+            $path = $request->file('picture')->store('profile-icons', 'public');
+            $request->user()->profile_photo_path = $path;
         }
 
         $request->user()->save();
@@ -57,4 +66,11 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    
+    public function create()
+    {
+        return view('mypages.create');
+    }
+    
+    
 }

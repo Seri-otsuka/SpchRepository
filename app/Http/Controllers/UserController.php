@@ -24,14 +24,23 @@ class UserController extends Controller
                 
     }
     
-    /*
-    public function relationship_users()
+    
+    public function follow_users(User $user)
     {
         $users = \Auth::user()->relationship_users()->orderBy('created_at', 'desc');
         $data = [
             'users' => $users,
         ];
-        return view('articles.bookmarks', $data);
+        return view('mypages.follow', $data);
     }
-    */
+    
+    public function follower_users(User $user)
+    {
+        $users = \Auth::user()->relationship_users()->orderBy('created_at', 'desc');
+        $data = [
+            'users' => $users,
+        ];
+        return view('mypages.follower', $data);
+    }
+    
 }
