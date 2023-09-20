@@ -11,6 +11,7 @@ class ArticleRequest extends FormRequest
         return [
             'article.title' => 'required|string|max:70',
             'article.text' => 'required|string|max:2000',
+            'image' => 'image|max:225',
         ];
     }
 }

@@ -15,6 +15,7 @@ class Article extends Model
         'title',
         'text',
         'category_id',
+        'image',
         ];
     
     public function getPaginateByLimit(int $limit_count = 3)
@@ -36,6 +37,12 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    
+    //記事の画像アップロードについて(複数枚の画像を保持)
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
 

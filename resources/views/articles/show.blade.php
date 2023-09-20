@@ -17,6 +17,8 @@
         <div class="article-info">
                       投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
                 </div>
+        <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
+        <img src="{{ '/storage/articles/'. $article['image']}}"/>
         <h1 class='title'>
             {{ $article->title }}
         </h1>
@@ -73,6 +75,7 @@
                 <ul>
                     @foreach($article->comments()->latest()->get() as $comment)
                     <li>
+                        投稿者：{{ $comment->user->name }}　投稿日：{{ $comment->created_at }}
                         {{ $comment->text }}
                     </li>
                     @endforeach
