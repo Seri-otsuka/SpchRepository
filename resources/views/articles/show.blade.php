@@ -68,6 +68,7 @@
                         <form method="POST" action="{{ route('comments.store',$article)}}">
                             @csrf
                             <input type="text" name="text" placeholder="コメント">
+                            <p class="text__error" style="color:red">{{ $errors->first('comment.text') }}</p>
                             <button>コメントする</button>
                         </form>
                     </li>

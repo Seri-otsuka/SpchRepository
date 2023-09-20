@@ -1,4 +1,4 @@
-
+<x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -38,6 +38,13 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        
+        <x-input-label for="text" :value="__('紹介文')" />
+        <input type="text" name="text" placeholder="〇〇を推してます！"　value="old('text')" />
+        
+         <div class="icon">
+                  <input type="file" name="icon" accept="image/png,image/jpeg,image/gif" />    
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
@@ -49,4 +56,4 @@
             </x-primary-button>
         </div>
     </form>
-
+</x-guest-layout>
