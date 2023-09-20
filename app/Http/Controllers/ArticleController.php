@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Relationship;
 use App\Models\Comment;
+use App\Models\Image;
+use Storage;
 
 
 class ArticleController extends Controller
@@ -23,11 +25,10 @@ class ArticleController extends Controller
             'articles' => $article->getPaginateByLimit(3)]);
     }
     //記事詳細表示のメソッド
-    public function show(Article $article,Comment $comment)
+    public function show(Article $article)
     {
         return view('articles.show')->with([
-            'article' => $article,
-            'comment' => $comment]);
+            'article' => $article,]);
     }
     //記事保存のメソッド
     public function store(Article $article, ArticleRequest $request)
@@ -35,7 +36,17 @@ class ArticleController extends Controller
         $input = $request['article'];
         $article = new Article();
         $article->user_id = \Auth::id();
+        
+        $article_image = $request->file('image');
+        if($article_image){
+            $path = Storage::disk('public')->putFile('articles',$article_image);
+            $articleFileName = basename($path);
+            $article->image = $articleFileName;
+        }else{
+            $path = null;
+        }
         $article->fill($input)->save();
+        
         return redirect('/articles/' . $article->id);
     }
     

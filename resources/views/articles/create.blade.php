@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>BlogName</h1>
-        <form action="/articles" method="POST">
+        <form action="/articles" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h2>Title</h2>
@@ -25,6 +25,9 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+            </div>
+             <div class="image">
+                  <input type="file" name="image" accept="image/png,image/jpeg,image/gif" />    
             </div>
             <input type="submit" value="投稿" />
         </form>

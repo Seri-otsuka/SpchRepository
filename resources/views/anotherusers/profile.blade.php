@@ -10,7 +10,6 @@
     <body>
         <div class="user">
         <h1>{{ $user_name }}さんのページ</h1>
-        
         </div>
         <div class="articles">
            @foreach ($articles as $article)

@@ -87,9 +87,16 @@ class User extends Authenticatable
         return $this->relationships()->where('followed_id', $user)->exists();
     }
     
+    //コメントについて
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    
+    //記事の画像アップロードについて
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
     
 

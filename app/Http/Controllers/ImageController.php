@@ -11,4 +11,5 @@ class ImageController extends Controller
     {
         return $image->get();
     }
+    
 }
