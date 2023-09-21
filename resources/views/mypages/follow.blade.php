@@ -10,8 +10,10 @@
     <body>
         <h1 class="page-heading">フォローした人</h1>
          <div class="articles">
-           @foreach ($follows as $follow)
-                {{ $follow->name }}
+           @foreach ($users as $user)
+           <div class="user_name">
+               {{ $user->name }}
+           </div>
            @endforeach
         </div>
     </body>

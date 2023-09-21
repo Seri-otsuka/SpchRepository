@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/articles/{user}/relationship', [RelationshipController::class, 'store'])->name('relationship.store');
     Route::delete('/articles/{user}/unrelationship', [RelationshipController::class, 'destroy'])->name('relationship.destroy');
     Route::get('/follows', [UserController::class, 'follows'])->name('follows');
-    Route::get('/followers', [UserController::class, 'follower_users'])->name('followers');
+    Route::get('/followers', [UserController::class, 'followers'])->name('followers');
     Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profile.create');
     Route::post('/mypage', [MypageController::class, 'store'])->name('profile.store');
     
