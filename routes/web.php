@@ -31,8 +31,7 @@ Route::get('/', function () {
 Route::post('/articles/{article}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/introductions', function () {
-    return view('introductions.index');
-});
+    return view('introductions.index');})->name('introduction');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
     Route::resource('/articles', ArticleController::class);
     Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('article.show');
-    Route::get('/article', [ArticleController::class, 'article']);
+    Route::get('/article', [ArticleController::class, 'article'])->name('article');
     Route::get('/articles/create', [ArticleController::class, 'create']);
     Route::post('/articles', [ArticleController::class, 'store']);
     Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
@@ -55,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/goods', [ArticleController::class, 'good_articles'])->name('goods');
     Route::post('/articles/{user}/relationship', [RelationshipController::class, 'store'])->name('relationship.store');
     Route::delete('/articles/{user}/unrelationship', [RelationshipController::class, 'destroy'])->name('relationship.destroy');
-    Route::get('/follows', [UserController::class, 'follow_users'])->name('follows');
+    Route::get('/follows', [UserController::class, 'follows'])->name('follows');
     Route::get('/followers', [UserController::class, 'follower_users'])->name('followers');
     Route::get('/profiles/create', [ProfileController::class, 'create'])->name('profile.create');
     Route::post('/mypage', [MypageController::class, 'store'])->name('profile.store');
