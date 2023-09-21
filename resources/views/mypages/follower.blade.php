@@ -8,13 +8,11 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1 class="page-heading">フォローされている人</h1>
+        <h1 class="page-heading">フォロワー</h1>
          <div class="articles">
-           @foreach ($relationships as $relationship)
-           <div class='relationship'>
-                <div class="relationships-info">
-                     <p>{{ $relationship->user->name}}</p>
-                </div>
+           @foreach ($users as $user)
+           <div class="user_name">
+               {{ $user->name }}
            </div>
            @endforeach
         </div>

@@ -83,15 +83,19 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'relationships', 'followed_id', 'user_id');
     }
 
+    //フォローしているユーザー
     public function followers()
     {
         return $this->belongsToMany(User::class, 'relationships', 'user_id', 'followed_id');
     }
     
+    //フォローされている
      public function relationship_users()
     {
         return $this->belongsToMany(User::class, 'relationships', 'user_id', 'followed_id');
     }
+    
+    
     
     //フォローしているかどうかの判断(followed_idにusesテーブルのidが入ってるかどうか)
     public function is_relationship($user)
