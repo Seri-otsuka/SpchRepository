@@ -78,7 +78,17 @@ class User extends Authenticatable
         return $this->hasMany(Relationship::class);
     }
     
-    public function relationship_users()
+     public function follows()
+    {
+        return $this->belongsToMany(User::class, 'relationships', 'followed_id', 'user_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'relationships', 'user_id', 'followed_id');
+    }
+    
+     public function relationship_users()
     {
         return $this->belongsToMany(User::class, 'relationships', 'user_id', 'followed_id');
     }
