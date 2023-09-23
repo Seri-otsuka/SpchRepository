@@ -26,5 +26,4 @@
             </div>
         </div>
     </div>
-    <p>こんにちわ</p>
 </x-app-layout>

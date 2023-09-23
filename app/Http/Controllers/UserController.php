@@ -37,7 +37,7 @@ class UserController extends Controller
     
      public function followers()
     {
-        $users = \Auth::user()->follows()->orderBy('created_at', 'desc')->paginate(3);
+        $users = \Auth::user()->follows()->orderBy('created_at', 'desc')->paginate(50);
         $data = [
             'users' => $users,
         ];

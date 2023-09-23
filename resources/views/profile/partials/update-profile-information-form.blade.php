@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('プロフィール情報') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
@@ -18,10 +18,10 @@
         @method('patch')
         
         
-+       <div>
-+           <x-picture-input />
-+           <x-input-error class="mt-2" :messages="$errors->get('picture')" />
-+       </div>
+       <div>
+           <x-picture-input />
+           <x-input-error class="mt-2" :messages="$errors->get('picture')" />
+      </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />

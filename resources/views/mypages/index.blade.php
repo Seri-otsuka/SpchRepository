@@ -14,16 +14,23 @@
                     {{ __('マイページ') }}
                 </h2>
             </x-slot>
-            <p>
-                {{ Auth::user()->name }}さん、お帰りなさい
-                {{ Auth::user()->text }}
-            </p>
-            <a href="/article">記事一覧へ</a>
-            <a href="{{ route('profile.edit') }}">ユーザー情報設定</a>
-            <a href="{{ route('goods') }}">いいねした記事</a>
-            <!--フォロー機能のテーブルからデータを取得して一覧を見れるようにしたい-->
-            <a href="{{ route('follows') }}"><x-primary-button>フォロー中</x-primary-button></a>
-            <a href="{{ route('followers') }}"><x-primary-button>フォロワー</x-primary-button></a>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900">
+                            <p>
+                                {{ Auth::user()->name }}さん、お帰りなさい
+                                {{ Auth::user()->text }}
+                            </p>
+    
+                            <a href="{{ route('goods') }}"><x-primary-button>いいねした記事</x-primary-button></a>
+                            <!--フォロー機能のテーブルからデータを取得して一覧を見れるようにしたい-->
+                            <a href="{{ route('follows') }}"><x-primary-button>フォロー中</x-primary-button></a>
+                            <a href="{{ route('followers') }}"><x-primary-button>フォロワー</x-primary-button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h1>自分の記事</h1>
                @foreach ($articles as $article)
                <div class="py-12">

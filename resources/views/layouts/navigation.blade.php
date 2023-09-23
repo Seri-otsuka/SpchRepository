@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- ログインのレイアウト -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('article') }}">
+                        <h1>すぷちゃ</h1>
                     </a>
                 </div>
 
@@ -22,6 +22,21 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('introduction')" :active="request()->routeIs('introduction')">
+                        {{ __('アニメ') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('introduction')" :active="request()->routeIs('introduction')">
+                        {{ __('ゲーム') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('introduction')" :active="request()->routeIs('introduction')">
+                        {{ __('K-POP') }}
+                    </x-nav-link>
+                </div>
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('introduction')" :active="request()->routeIs('introduction')">
                         {{ __('サイトについて') }}
                     </x-nav-link>
