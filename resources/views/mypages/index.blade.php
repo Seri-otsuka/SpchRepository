@@ -18,6 +18,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
+                            <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}">
                             <p>
                                 {{ Auth::user()->name }}さん、お帰りなさい
                                 {{ Auth::user()->text }}

@@ -20,6 +20,7 @@
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900">  
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($user->profile_photo_path) ? asset('storage/' . $user->profile_photo_path) : asset('images/user_icon.png') }}">
                                <div class="user_name">
                                    {{ $user->name }}
                                </div>

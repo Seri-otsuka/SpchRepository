@@ -11,7 +11,7 @@ use App\Models\Article;
 class CommentController extends Controller
 {
     
-    public function store(CommentRequest $request,Article $article)
+    public function store(Request $request,Article $article)
     {
         $input = $request['comment'];
         $comment = new Comment();
