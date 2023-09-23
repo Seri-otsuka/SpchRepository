@@ -15,9 +15,15 @@
                         {{ __('サイトについて') }}
                     </h2>
                 </x-slot>
-            <a href="login">ログイン</a>
-            <a href="register">新規登録</a>
-           <P>サイトについての紹介文</P>
-        </body>
-    </html>
+                  <div class="py-12">
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6 text-gray-900">
+                                 <P>こんにちは</P>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+         </body>
+     </html>
 </x-app-layout>
