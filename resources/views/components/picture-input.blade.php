@@ -4,7 +4,7 @@
              id="preview"
              src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}"
              alt=""
-             class="w-16 h-16 rounded-lg object-cover border-none bg-gray-200">
+             class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
     </div>
     <div class="flex items-center">
         <button
