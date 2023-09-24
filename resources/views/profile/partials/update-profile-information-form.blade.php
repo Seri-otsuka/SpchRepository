@@ -53,6 +53,7 @@
             @endif
         </div>
         
+        
          <div>
             <x-input-label for="text" :value="__('自己紹介')" />
             <x-text-input id="text" name="text" type="text" class="mt-1 block w-full" :value="old('text', $user->text)" required autofocus autocomplete="username" />
