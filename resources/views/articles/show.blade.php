@@ -13,9 +13,32 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900"> 
-                            
+                          <h1 class="text-2xl">
+                                <div class="display: flex border-b-2 border-red-500">
+                                <!--アイコン-->
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                 <!--ユーザー名-->
+                                 <div class="m-4">
+                                     <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
+                                 </div>
+                                  <div class="user-control m-3">
+                                        @if (!Auth::user()->is_relationship($article->user_id))
+                                        <form action="{{ route('relationship.store', $article->user) }}" method="post">
+                                            @csrf
+                                             <button class="'inline-flex items-center px-4 py-2 bg-lime-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-lime-600 focus:bg-lime-600 active:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">フォロー<button>
+                                        </form>
+                                        @else
+                                        <form action="{{ route('relationship.destroy', $article->user) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <x-primary-button>フォロー解除</x-primary-button>
+                                        </form>
+                                        @endif
+                                    </div>
+                                </div>
+                            </h2>
                             <div class="article-info">
-                                          投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
+                                 投稿日：{{ $article->created_at }}
                                     </div>
                             <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
                             <div class="flex justify-center rounded-lg">
@@ -90,7 +113,7 @@
                                     <li>
                                         <form method="POST" action="{{ route('comments.store',$article)}}">
                                             @csrf
-                                            <input type="text" name="text" placeholder="コメント">
+                                            <input class="'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="text" placeholder="コメント">
                                            <x-primary-button>コメントする</x-primary-button>
                                             </p>
                                         </form>
@@ -103,3 +126,4 @@
         </body>
     </html>
 </x-app-layout>
+                                

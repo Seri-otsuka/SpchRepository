@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("プロフィール情報を更新します。") }}
         </p>
     </header>
 
@@ -51,6 +51,13 @@
                     @endif
                 </div>
             @endif
+        </div>
+        
+        
+         <div>
+            <x-input-label for="text" :value="__('自己紹介')" />
+            <x-text-input id="text" name="text" type="text" class="mt-1 block w-full" :value="old('text', $user->text)" required autofocus autocomplete="username" />
+            <x-input-error class="mt-2" :messages="$errors->get('text')" />
         </div>
 
         <div class="flex items-center gap-4">
