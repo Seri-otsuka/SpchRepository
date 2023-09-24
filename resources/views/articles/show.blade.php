@@ -75,7 +75,7 @@
                                        <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
                                    </form>
                                    @endcan
-                                         @can('update', $article)
+                                   @can('update', $article)
                                 <div class="edit">
                                     <a href="/articles/{{ $article->id }}/edit">編集</a>
                                 </div>
