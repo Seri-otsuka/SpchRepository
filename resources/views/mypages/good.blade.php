@@ -21,6 +21,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900">
                                <div class='article'>
+                                    <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
                                     <div class="article-info">
                                           投稿日：{{ $article->created_at }}｜投稿者：{{ $article->user->name }}
                                     </div>
