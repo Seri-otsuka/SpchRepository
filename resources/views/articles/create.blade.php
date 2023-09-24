@@ -24,11 +24,11 @@
                                 </div>
                                 <div class="text">
                                     <x-input-label for="title" :value="__('内容')" />
-                                    <textarea class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="article[text]" placeholder="ここに記事を書いてね！">{{ old('article.text') }}</textarea>
+                                                            <textarea class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="article[text]" placeholder="ここに記事を書いてね！">{{ old('article.text') }}</textarea>
                                     <p class="text_error" style="color:red">{{ $errors->first('article.text') }}</p>
                                 </div>
                                 <div class="category">
-                                    <x-input-label for="title" :value="__('カテゴリー')" />
+                                         <x-input-label for="title" :value="__('カテゴリー')" />
                                     <select class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="article[category_id]">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -38,7 +38,7 @@
                                  <div class="image">
                                       <input type="file" name="image" accept="image/png,image/jpeg,image/gif" />    
                                 </div>
-                                <input class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" type="submit" value="投稿" />
+                                   <input class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" type="submit" value="投稿" />
                             </form>
                             <div class="footer">
                                 <a href="/article">戻る</a>

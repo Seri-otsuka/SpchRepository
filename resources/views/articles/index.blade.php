@@ -14,10 +14,10 @@
                     {{ __('記事一覧') }}
                 </h2>
             </x-slot>
-            <div class="m-5">
+              <div class="m-5">
                 <a href="/articles/create"><x-primary-button>＋記事を作る</x-primary-button></a>
             </div>
-        
+
         @foreach ($articles as $article)
         <a href="{{ route('article.show', $article->id)}}">
         <div class="py-12">
@@ -26,7 +26,7 @@
                     <div class="p-6 text-gray-900">    
                         <div class="articles">
                             <h1 class="text-2xl">
-                                <div class="display: flex border-b-2 border-red-500">
+                                   <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
                                 <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
                                  <!--ユーザー名-->
@@ -37,7 +37,7 @@
                                         @if (!Auth::user()->is_relationship($article->user_id))
                                         <form action="{{ route('relationship.store', $article->user) }}" method="post">
                                             @csrf
-                                             <button class="'inline-flex items-center px-4 py-2 bg-lime-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-lime-600 focus:bg-lime-600 active:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">フォロー<button>
+                                               <button class="'inline-flex items-center px-4 py-2 bg-lime-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-lime-600 focus:bg-lime-600 active:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">フォロー<button>
                                         </form>
                                         @else
                                         <form action="{{ route('relationship.destroy', $article->user) }}" method="post">
@@ -50,7 +50,7 @@
                                 </div>
                             </h2>
                            <div class='article'>
-                               <div class="display: flex">
+                                <div class="display: flex">
                                      <h2 class='text-2xl'>
                                        {{ $article->title }}
                                    </h2>

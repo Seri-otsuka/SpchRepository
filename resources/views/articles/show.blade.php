@@ -13,7 +13,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900"> 
-                            <h1 class="text-2xl">
+                          <h1 class="text-2xl">
                                 <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
                                 <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
@@ -38,7 +38,7 @@
                                 </div>
                             </h2>
                             <div class="article-info">
-                                          投稿日：{{ $article->created_at }}
+                                 投稿日：{{ $article->created_at }}
                                     </div>
                             <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
                             <div class="flex justify-center rounded-lg">
@@ -126,3 +126,4 @@
         </body>
     </html>
 </x-app-layout>
+                                
