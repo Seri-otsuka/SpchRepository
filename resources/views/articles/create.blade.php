@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="text">
                                     <x-input-label for="title" :value="__('内容')" />
-                                                            <textarea class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="article[text]" placeholder="ここに記事を書いてね！">{{ old('article.text') }}</textarea>
+                                    <textarea class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="article[text]" placeholder="ここに記事を書いてね！">{{ old('article.text') }}</textarea>
                                     <p class="text_error" style="color:red">{{ $errors->first('article.text') }}</p>
                                 </div>
                                 <div class="category">

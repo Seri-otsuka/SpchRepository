@@ -15,6 +15,12 @@ module.exports = {
             },
         },
     },
+    
+     variants: {
+    extend: {
+      textColor: ['visited'],
+    }
+  },
 
     plugins: [require('@tailwindcss/forms')],
 };

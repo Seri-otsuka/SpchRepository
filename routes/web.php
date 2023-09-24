@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/articles', [ArticleController::class, 'store']);
     Route::get('/articles/{article}/edit', [ArticleController::class, 'edit']);
     Route::put('/articles/{article}', [ArticleController::class, 'update']);
-    Route::delete('/articles/{article}', [ArticleController::class, 'delete']);
+    Route::delete('/articles/{article}', [ArticleController::class, 'destroy']);
     Route::get('/categories/{category}', [CategoryController::class,'index']);
     Route::get('/users/{user}', [UserController::class,'another']);
     Route::post('/articles/{article}/good', [GoodController::class, 'store'])->name('good.store');
