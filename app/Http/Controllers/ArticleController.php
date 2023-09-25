@@ -55,7 +55,8 @@ class ArticleController extends Controller
     {
         $this->authorize($article);
         $data = ['article' => $article];
-        return view('articles.edit')->with(['article' => $article]);
+        return view('articles.edit')->with([
+            'article' => $article]);
     }
     
     //記事編集後投稿のメソッド

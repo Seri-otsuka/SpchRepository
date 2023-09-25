@@ -51,12 +51,14 @@
                             </div>
                             <div class='content'>
                                 <div class='content__article'>
-                                    <p>{{ $article->text }}</p>
+                                    <p>{!!nl2br($article->text)!!}</p>
                                 </div>
+                                 <button class="inline-flex items-center rounded-full bg-pink-50 px-4 py-2 text-base font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10 my-3">
                                 <a href="/categories/{{ $article->category->id }}">{{ $article->category->name }}</a>
+                                </button>
                             </div>
                             <!--いいねボタン-->
-                            <div align="right" class="article-control">
+                            <div align="right" class="article-control mb-3">
                             @if (!Auth::user()->is_good($article->id))
                             <form action="{{ route('good.store', $article) }}" method="post">
                                 @csrf
@@ -70,18 +72,22 @@
                             </form>
                             @endif
                         </div>
-                            @can('delete', $article)
-                            <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
-                                       @csrf
-                                       @method('DELETE')
-                                       <button type="button" onclick="deleteArticle({{ $article->id }})">削除</button>
-                                   </form>
-                                   @endcan
-                                   @can('update', $article)
-                                <div class="edit">
-                                    <a href="/articles/{{ $article->id }}/edit">編集</a>
+                        <div align="right" class="flex justify-end">
+                                @can('update', $article)
+                                <div class="edit mx-3">
+                                    <x-primary-button>
+                                        <a href="/articles/{{ $article->id }}/edit">編集</a>
+                                    </x-primary-button>
                                 </div>
                                 @endcan
+                                   @can('delete', $article)
+                               <form action="/articles/{{ $article->id }}" id="form_{{ $article->id }}" method="post">
+                                   @csrf
+                                   @method('DELETE')
+                                   <x-primary-button type="button" onclick="deleteArticle({{ $article->id }})">削除</x-primary-button>
+                               </form>
+                               @endcan
+                               </div>
                              <script>
                                 function deleteArticle(id){
                                     'use strict'
@@ -95,11 +101,10 @@
                     </div>
                  </div>
             </div>
-        　　 <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        　　 <div class="py-1">
+                <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900">               
-                            <h2>コメント</h2>
+                        <div class="p-6 text-gray-900">
                               <ul>
                                     @foreach($article->comments()->latest()->get() as $comment)
                                     <li>
@@ -110,6 +115,7 @@
                                 </ul>
                                 <ul>
                                     <li>
+                                        <x-input-label for="title" :value="__('コメント')" />
                                         <form method="POST" action="{{ route('comments.store',$article)}}">
                                             @csrf
                                             <input class="'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="text" placeholder="コメント">

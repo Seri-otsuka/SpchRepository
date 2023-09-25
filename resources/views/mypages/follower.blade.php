@@ -17,12 +17,12 @@
              <div class="articles">
                @foreach ($users as $user)
                 <div class="py-12">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900"> 
                             <h1 class="text-xl">
                             <div class="display: flex">
-                              <img class="w-12 h-12 rounded-full object-cover border-none bg-gray-200 mx-3" src="{{ isset($user->profile_photo_path) ? asset('storage/' . $user->profile_photo_path) : asset('images/user_icon.png') }}">
+                              <img class="w-10 h-10 rounded-full object-cover border-none bg-gray-200 mx-3" src="{{ isset($user->profile_photo_path) ? asset('storage/' . $user->profile_photo_path) : asset('images/user_icon.png') }}">
                                <div class="user_name mx-3 my-2">
                                    {{ $user->name }}
                                </div>
