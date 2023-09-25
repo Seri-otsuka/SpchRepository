@@ -40,10 +40,14 @@
         </div>
         
         <x-input-label for="text" :value="__('紹介文')" />
-        <input type="text" name="text" placeholder="〇〇を推してます！"　value="old('text')" />
+        <input  class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="text" placeholder="〇〇を推してます！"　value="old('text')" />
         
          <div class="icon">
-                  <input type="file" name="icon" accept="image/png,image/jpeg,image/gif" />    
+             <x-input-label for="text" :value="__('アイコン')" />
+              <div>
+                   <x-picture-input />
+                   <x-input-error class="mt-2" :messages="$errors->get('picture')" />
+              </div>  
         </div>
 
         <div class="flex items-center justify-end mt-4">
