@@ -14,7 +14,7 @@
                     {{ __('記事一覧') }}
                 </h2>
             </x-slot>
-              <div class="m-5">
+              <div align="right" class="m-5">
                 <a href="/articles/create"><x-primary-button>＋記事を作る</x-primary-button></a>
             </div>
 
