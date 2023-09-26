@@ -27,9 +27,9 @@
                     </a>
                 </div>
                  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('introduction')" :active="request()->routeIs('introduction')">
+                         <a href="/categories/3" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                         {{ __('ゲーム') }}
-                    </x-nav-link>
+                    </a>
                 </div>
                   <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                          <a href="/categories/2" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
