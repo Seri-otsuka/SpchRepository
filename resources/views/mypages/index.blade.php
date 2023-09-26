@@ -54,12 +54,14 @@
                                 </div>
                             </h2>
                            <div class='article'>
-                                 <h2 class='text-2xl'>
-                                   {{ $article->title }}
-                                 </h2>
-                                <div class="ml-10 text-gray-400 text-right">
-                                          投稿日：{{ $article->created_at }}
+                                 <div class="flex justify-between">
+                                 <h1 class='title text-2xl ml-5'>
+                                    {{ $article->title }}
+                                </h1>
+                                 <div class="ml-10 text-gray-400 text-right">
+                                              投稿日：{{ $article->created_at }}
                                 </div>
+                            </div>
                                 <div class="flex justify-between m-4 text-lg">
                                     <p class='text'>{!!nl2br($article->text)!!}</p>
                                     <div align="right">

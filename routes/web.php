@@ -24,18 +24,23 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::post('/articles/{article}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/introductions', function () {
     return view('introductions.index');})->name('introduction');
+    
+Route::get('/', function () {
+    return view('toppages.index');})->name('toppage');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/article', [ArticleController::class, 'article'])->name('article');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');

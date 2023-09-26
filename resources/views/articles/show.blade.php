@@ -16,7 +16,7 @@
                           <h1 class="text-2xl">
                                 <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
-                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200 " src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
                                  <!--ユーザー名-->
                                  <div class="m-4">
                                      <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
@@ -47,7 +47,7 @@
                             </div>
                             <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
                             <div class="flex justify-center rounded-lg">
-                            <img class="object-contain" src="{{ '/storage/articles/'. $article['image']}}"/>
+                            <img class="object-contain rounded-lg my-3" src="{{ '/storage/articles/'. $article['image']}}"/>
                             </div>
                             <div class='content'>
                                 <div class='content__article'>
@@ -105,20 +105,19 @@
                 <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
-                              <ul>
+                            <div class="text-base">コメント欄</div>
                                     @foreach($article->comments()->latest()->get() as $comment)
-                                    <li>
-                                        投稿者：{{ $comment->user->name }}　投稿日：{{ $comment->created_at }}
-                                        {{ $comment->text }}
-                                    </li>
-                                    @endforeach
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <x-input-label for="title" :value="__('コメント')" />
+                                        <div class="display: flex border-b-2 border-gray-200 my-1">
+                                             <img class="w-6 h-6 rounded-full object-cover border-none bg-gray-400 mx-3" src="{{ isset($comment->user->profile_photo_path) ? asset('storage/' . $comment->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                        <a href="/users/{{ $comment->user->id }}">{{ $comment->user->name }}</a>・{{ $comment->created_at }}
+                                        </div>
+                                       <div class="mx-4">
+                                           {{ $comment->text }}
+                                       </div>
+                                        @endforeach
                                         <form method="POST" action="{{ route('comments.store',$article)}}">
                                             @csrf
-                                            <input class="'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="text" placeholder="コメント">
+                                            <input class="w-96 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm my-3 mx-3" type="text" name="text" placeholder="コメント">
                                            <x-primary-button>コメントする</x-primary-button>
                                             </p>
                                         </form>
