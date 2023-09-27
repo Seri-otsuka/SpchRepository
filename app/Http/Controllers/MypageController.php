@@ -15,7 +15,7 @@ class MypageController extends Controller
       public function index(Profile $profile)
     {
        // 自分の記事一覧を投稿日降順で取得
-        $articles = \Auth::user()->articles()->orderBy('created_at', 'desc')->paginate(3);
+        $articles = \Auth::user()->articles()->orderBy('created_at', 'desc')->paginate(25);
         $data = [
             'articles' => $articles,
         ];

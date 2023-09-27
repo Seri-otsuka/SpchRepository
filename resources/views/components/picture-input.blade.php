@@ -1,10 +1,14 @@
 <div class="flex mb-4" x-data="picturePreview()">
     <div class="mr-3">
+        @if(Auth::user()->profile_photo_path === null)
+        <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2') }}">
+        @else
         <img
              id="preview"
              src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}"
              alt=""
              class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+        @endif
     </div>
     <div class="flex items-center">
         <button
