@@ -22,9 +22,15 @@
                             <div class="p-6 text-gray-900">  
                              <h1 class="text-xl">
                             <div class="display: flex">
-                              <img class="w-10 h-10 rounded-full object-cover border-none bg-gray-200 mx-3" src="{{ isset($user->profile_photo_path) ? asset('storage/' . $user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                 @if($user->profile_photo_path === null)
+                                <img class="w-10 h-10 rounded-full object-cover border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2') }}">
+                                @else
+                                <img class="w-10 h-10 rounded-full object-cover border-none bg-gray-200 mx-3" src="{{ isset($user->profile_photo_path) ? asset('storage/' . $user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                @endif
                                <div class="user_name mx-3 my-2">
+                                   <a href="/users/{{ $user->id }}">
                                    {{ $user->name }}
+                                   </a>
                                </div>
                             </div>
                         </h2>

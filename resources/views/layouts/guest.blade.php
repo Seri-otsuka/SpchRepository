@@ -18,7 +18,8 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-red-200">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <div class="text-5xl font-mono text-white">すぷちゃ!</div>
+                    <div class="">-ヲタクのための押し布教アプリ-</div>
                 </a>
             </div>
 

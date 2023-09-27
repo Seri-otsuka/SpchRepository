@@ -41,14 +41,7 @@
         
         <x-input-label for="text" :value="__('紹介文')" />
         <input  class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text" name="text" placeholder="〇〇を推してます！"　value="old('text')" />
-        
-         <div class="icon">
-             <x-input-label for="text" :value="__('アイコン')" />
-              <div>
-                   <x-picture-input />
-                   <x-input-error class="mt-2" :messages="$errors->get('picture')" />
-              </div>  
-        </div>
+    
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
