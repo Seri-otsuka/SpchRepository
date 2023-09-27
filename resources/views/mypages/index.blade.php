@@ -14,14 +14,21 @@
                     {{ __('マイページ') }}
                 </h2>
             </x-slot>
+             <div align="right" class="m-5">
+                <a href="/articles/create"><x-primary-button>＋記事を作る</x-primary-button></a>
+            </div>
             <div class="py-10">
                 <div class="max-w-5xl mb-1 mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900">
                             <h1 class="text-2xl">
                              <div class="display: flex">
-                              <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}">
-                              <div class="m-4">
+                                  @if(Auth::user()->profile_photo_path === null)
+                                <img class="mr-4 w-16 h-16 rounded-full object-contain border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2.jpg') }}">
+                                @else
+                                <img class="mr-4 w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}">
+                                @endif
+                                 <div class="m-4">
                                  {{ Auth::user()->name }}
                                </div>
                              </div>
@@ -65,7 +72,10 @@
                                 <div class="flex justify-between m-4 text-lg">
                                     <p class='text'>{!!nl2br($article->text)!!}</p>
                                     <div align="right">
+                                        @if($article->image === null)
+                                        @else
                                         <img class="object-contain rounded-lg aspect-auto w-60 h-30" src="{{ '/storage/articles/'. $article['image']}}"/>
+                                        @endif
                                     </div>
                                 </div>
                                <button class="inline-flex items-center rounded-full bg-pink-50 px-4 py-2 text-base font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10 my-3">

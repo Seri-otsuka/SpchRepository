@@ -7,6 +7,8 @@
     
             <!-- Fonts -->
             <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ 'css/app.css' }}">
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
         </head>
         <body class="antialiased">
               <x-slot name="header">
@@ -28,7 +30,11 @@
                             <h1 class="text-2xl">
                                 <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
+                                 @if($article->user->profile_photo_path === null)
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2') }}">
+                                @else
                                 <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                @endif
                                  <!--ユーザー名-->
                                  <div class="m-4">
                                      <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
@@ -60,7 +66,10 @@
                                 <div class="flex justify-between m-4 text-lg">
                                     <p class='text'>{!!nl2br($article->text)!!}</p>
                                     <div align="right">
+                                        @if($article->image === null)
+                                        @else
                                         <img class="object-contain rounded-lg aspect-auto w-60 h-30" src="{{ '/storage/articles/'. $article['image']}}"/>
+                                        @endif
                                     </div>
                                 </div>
                                <button class="inline-flex items-center rounded-full bg-pink-50 px-4 py-2 text-base font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10 my-3">
@@ -87,21 +96,21 @@
                 </div>
             </div>
         </div>
-                           @endforeach
-                        </a>
-                        </div>
-                          <div class='paginate'>
-                            {{ $articles->links() }}
-                        </div>
-                        <script>
-                            function deleteArticle(id){
-                                'use strict'
-                                
-                                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
-                                    document.getElementById(`form_${id}`).submit();
-                                }
-                            }
-                        </script>
+       @endforeach
+    </a>
+    </div>
+      <div align="center" class='bg-red-100'>
+        {{ $articles->links() }}
+    </div>
+    <script>
+        function deleteArticle(id){
+            'use strict'
+            
+            if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                document.getElementById(`form_${id}`).submit();
+            }
+        }
+    </script>
         </body>
     </html>
 </x-app-layout>

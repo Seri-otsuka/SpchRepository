@@ -9,6 +9,14 @@
             <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         </head>
         <body>
+             <x-slot name="header">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('記事詳細') }}
+                </h2>
+            </x-slot>
+              <div align="right" class="m-5">
+                <a href="/articles/create"><x-primary-button>＋記事を作る</x-primary-button></a>
+            </div>
             <div class="py-12">
                 <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -47,7 +55,10 @@
                             </div>
                             <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
                             <div class="flex justify-center rounded-lg">
+                                  @if($article->image === null)
+                                  @else
                             <img class="object-contain rounded-lg my-3" src="{{ '/storage/articles/'. $article['image']}}"/>
+                                  @endif
                             </div>
                             <div class='content'>
                                 <div class='content__article'>
