@@ -15,7 +15,7 @@ class UserController extends Controller
         return $user->get();
     }
 
-
+    //自分以外のユーザのページ
     public function another(User $user)
     {
         return view('anotherusers.profile')->with(
@@ -25,7 +25,7 @@ class UserController extends Controller
     }
     
     
-    
+    //フォロー中のユーザーを取得
     public function follows()
     {
         $users = \Auth::user()->followers()->orderBy('created_at', 'desc')->paginate(3);
@@ -34,7 +34,7 @@ class UserController extends Controller
         ];
         return view('mypages.follow', $data);
     }
-    
+    //フォロワーを取得
      public function followers()
     {
         $users = \Auth::user()->follows()->orderBy('created_at', 'desc')->paginate(50);

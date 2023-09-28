@@ -10,7 +10,7 @@ use App\Models\Article;
 
 class CommentController extends Controller
 {
-    
+    //コメント投稿
     public function store(Request $request,Article $article)
     {
         $input = $request['comment'];
