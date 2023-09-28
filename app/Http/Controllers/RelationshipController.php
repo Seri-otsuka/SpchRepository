@@ -12,6 +12,7 @@ class RelationshipController extends Controller
         return $relationship->get();
     }
     
+    //フォロー
     public function store($userid) {
         $user = \Auth::user();
         if (!$user->is_relationship($userid)) {
@@ -19,6 +20,7 @@ class RelationshipController extends Controller
         }
         return back();
     }
+    //フォロー解除
     public function destroy($userId) {
         $user = \Auth::user();
         if ($user->is_relationship($userId)) {

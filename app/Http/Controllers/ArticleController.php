@@ -69,6 +69,7 @@ class ArticleController extends Controller
         return redirect('/articles/' . $article->id);
     }
     
+    //記事削除のメソッド    
    public function destroy(Article $article)
    {
        $this->authorize($article);
