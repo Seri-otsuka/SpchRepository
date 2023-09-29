@@ -1,11 +1,11 @@
 <div class="flex mb-4" x-data="picturePreview()">
     <div class="mr-3">
         @if(Auth::user()->profile_photo_path === null)
-        <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2') }}">
+         <img class="mr-4 w-10 h-10 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
         @else
         <img
              id="preview"
-             src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}"
+             src="{{Auth::user()->profile_photo_path}}"
              alt=""
              class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
         @endif

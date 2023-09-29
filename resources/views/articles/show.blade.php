@@ -24,7 +24,11 @@
                           <h1 class="text-2xl">
                                 <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
-                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200 " src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                 @if($article->user->profile_photo_path == null)
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
+                                @else
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ $article->user->profile_photo_path }}">
+                                @endif
                                  <!--ユーザー名-->
                                  <div class="m-4">
                                      <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
@@ -119,7 +123,11 @@
                             <div class="text-base">コメント欄</div>
                                     @foreach($article->comments()->latest()->get() as $comment)
                                         <div class="display: flex border-b-2 border-gray-200 my-1">
-                                             <img class="w-6 h-6 rounded-full object-cover border-none bg-gray-400 mx-3" src="{{ isset($comment->user->profile_photo_path) ? asset('storage/' . $comment->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                              @if($comment->user->profile_photo_path == null)
+                                                <img class="w-6 h-6 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
+                                                @else
+                                             <img class="w-6 h-6 rounded-full object-cover border-none bg-gray-400 mx-3" src="{{ $comment->user->profile_photo_path }}">
+                                                @endif
                                         <a href="/users/{{ $comment->user->id }}">{{ $comment->user->name }}</a>・{{ $comment->created_at }}
                                         </div>
                                        <div class="mx-4">
