@@ -56,8 +56,8 @@
                             <!--nullで入れてるのがあるからコードだけ書いてしまうとちっさいイラストだけ出る-->
                             <div class="flex justify-center rounded-lg">
                                   @if($article->image === null)
-                                  @else
-                            <img class="object-contain rounded-lg my-3" src="{{ '/storage/articles/'. $article['image']}}"/>
+                                  @else 
+                            <img class="object-contain rounded-lg my-3" src="{{ $article->image }}"/>
                                   @endif
                             </div>
                             <div class='content'>

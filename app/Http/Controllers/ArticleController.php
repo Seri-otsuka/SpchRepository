@@ -11,6 +11,7 @@ use App\Models\Relationship;
 use App\Models\Comment;
 use App\Models\Image;
 use Storage;
+use Cloudinary;
 
 
 class ArticleController extends Controller
@@ -39,9 +40,8 @@ class ArticleController extends Controller
         
         $article_image = $request->file('image');
         if($article_image){
-            $path = Storage::disk('public')->putFile('articles',$article_image);
-            $articleFileName = basename($path);
-            $article->image = $articleFileName;
+            $image_url = Cloudinary::upload(($article_image)->getRealPath())->getSecurePath();
+            $input += ['image' => $image_url];
         }else{
             $path = null;
         }

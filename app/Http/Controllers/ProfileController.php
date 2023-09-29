@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\User;
 use Storage;
 use App\Http\Requests\ProfileRequest;
+use Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -37,7 +38,7 @@ class ProfileController extends Controller
         
         $path = null;
         if ($request->hasFile('picture')) {
-            $path = $request->file('picture')->store('profile-icons', 'public');
+            $path = Cloudinary::upload($request->file('picture')->getRealPath())->getSecurePath();
             $request->user()->profile_photo_path = $path;
         }
 

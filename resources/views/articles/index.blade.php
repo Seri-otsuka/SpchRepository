@@ -19,7 +19,6 @@
               <div align="right" class="m-5">
                 <a href="/articles/create"><x-primary-button>＋記事を作る</x-primary-button></a>
             </div>
-
         @foreach ($articles as $article)
         <a href="{{ route('article.show', $article->id)}}">
         <div class="py-12">
@@ -30,11 +29,12 @@
                             <h1 class="text-2xl">
                                 <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
-                                 @if($article->user->profile_photo_path === null)
-                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2') }}">
+                                 @if($article->user->profile_photo_path == null)
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
                                 @else
-                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ $article->user->profile_photo_path }}">
                                 @endif
+                
                                  <!--ユーザー名-->
                                  <div class="m-4">
                                      <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
@@ -68,7 +68,7 @@
                                     <div align="right">
                                         @if($article->image === null)
                                         @else
-                                        <img class="object-contain rounded-lg aspect-auto w-60 h-30" src="{{ '/storage/articles/'. $article['image']}}"/>
+                                        <img class="object-contain rounded-lg aspect-auto w-60 h-30" src="{{ $article->image }}"/>
                                         @endif
                                     </div>
                                 </div>

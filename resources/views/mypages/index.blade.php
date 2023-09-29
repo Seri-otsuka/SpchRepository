@@ -23,10 +23,10 @@
                         <div class="p-6 text-gray-900">
                             <h1 class="text-2xl">
                              <div class="display: flex">
-                                  @if(Auth::user()->profile_photo_path === null)
-                                <img class="mr-4 w-16 h-16 rounded-full object-contain border-none bg-gray-200" scr="{{ asset('storage/images/upper_body-2.jpg') }}">
+                                 @if(Auth::user()->profile_photo_path == null)
+                                <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
                                 @else
-                                <img class="mr-4 w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="{{ isset(Auth::user()->profile_photo_path) ? asset('storage/' . Auth::user()->profile_photo_path) : asset('images/user_icon.png') }}">
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ Auth::user()->profile_photo_path }}">
                                 @endif
                                  <div class="m-4">
                                  {{ Auth::user()->name }}
@@ -53,7 +53,11 @@
                             <h1 class="text-2xl">
                                    <div class="display: flex border-b-2 border-red-500">
                                 <!--アイコン-->
-                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ isset($article->user->profile_photo_path) ? asset('storage/' . $article->user->profile_photo_path) : asset('images/user_icon.png') }}">
+                                  @if($article->user->profile_photo_path == null)
+                                <img class="w-16 h-16 rounded-full object-cover border-none bg-gray-200" src="https://res.cloudinary.com/dlfimibcq/image/upload/v1695984855/aqeoyds9gl2qkhb5dtni.jpg">
+                                @else
+                                <img class="w-14 h-14 rounded-full object-cover border-none bg-gray-200" src="{{ $article->user->profile_photo_path }}">
+                                @endif
                                  <!--ユーザー名-->
                                  <div class="m-4">
                                      <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
